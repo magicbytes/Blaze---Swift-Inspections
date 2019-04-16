@@ -1,0 +1,48 @@
+<idea-plugin>
+    <id>com.magicbytes.blaze</id>
+    <name>Blaze - Swift Inspections</name>
+    <vendor email="magic.bytes.soft@gmail.com" url="https://www.facebook.com/magycBytes/">MagicBytesSoft</vendor>
+
+    <description><![CDATA[
+    This Plugin offers multiple inspections for Swift. It includes inspection as:
+    <li>Sorting Enum cases alphabetically </li>
+    <li>Unused methods/Empty methods/Methods calling only supper methods</li>
+    <li>Unused parameters</li>
+    ]]></description>
+
+    <version>0.2.0</version>
+
+
+    <idea-version since-build="163"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <depends>com.intellij.modules.appcode</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <inspectionToolProvider implementation="inspections.AllInspectionsProvider"/>
+
+        <intentionAction>
+            <className>intents.AddToConstructor</className>
+        </intentionAction>
+    </extensions>
+
+    <!--<actions>-->
+    <!--&lt;!&ndash; Add your actions here &ndash;&gt;-->
+    <!--<action popup="true" class="actions.CreateTestClassAction" id="MyPlugin.CodeMenu.TestClass"-->
+    <!--text="Create a new Test Class">-->
+    <!--<add-to-group group-id="NewGroup" anchor="last" />-->
+    <!--</action>-->
+    <!--</actions>-->
+
+    <!--<project-components>-->
+    <!--<component>-->
+    <!--<implementation-class>intents.AddToConstructor</implementation-class>-->
+    <!--</component>-->
+    <!--</project-components>-->
+</idea-plugin>

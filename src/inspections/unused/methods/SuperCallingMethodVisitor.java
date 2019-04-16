@@ -34,7 +34,7 @@ public class SuperCallingMethodVisitor extends SwiftVisitor {
         if (shouldRegister) {
             PsiElement nameIdentifier = functionDeclaration.getNameIdentifier();
             if (nameIdentifier != null) {
-                holder.registerProblem(nameIdentifier, "Method calling only supper", ProblemHighlightType.LIKE_UNUSED_SYMBOL, new UnusedMethodFix(functionDeclaration));
+                holder.registerProblem(nameIdentifier, "Method calling only supper", ProblemHighlightType.GENERIC_ERROR_OR_WARNING, new UnusedMethodFix(functionDeclaration));
             }
         }
     }

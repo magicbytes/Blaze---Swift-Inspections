@@ -38,8 +38,9 @@ public class UnusedParameterVisitor extends SwiftVisitor {
 
             PsiElement context = parameter.getContext();
             if (context != null) {
-                SwiftFunctionDeclaration functionDeclaration = (SwiftFunctionDeclaration) context.getContext();
-                if (functionDeclaration != null) {
+                PsiElement nextContext = context.getContext();
+                if (nextContext instanceof SwiftFunctionDeclaration) {
+                    SwiftFunctionDeclaration functionDeclaration = (SwiftFunctionDeclaration) nextContext;
                     isInAttributeList = FunctionUtils.hasIbAction(functionDeclaration);
                     isFromAncestors = isFunctionFromAncestors(functionDeclaration);
                 }

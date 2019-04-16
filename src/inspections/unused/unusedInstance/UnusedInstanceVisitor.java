@@ -6,11 +6,14 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.jetbrains.swift.psi.SwiftIdentifierPattern;
+import com.jetbrains.swift.psi.SwiftPatternInitializer;
 import com.jetbrains.swift.psi.SwiftVariableDeclaration;
 import com.jetbrains.swift.psi.SwiftVisitor;
 import com.jetbrains.swift.psi.impl.SwiftPatternInitializerGenImpl;
 import inspections.unused.methods.UnusedMethodFix;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class UnusedInstanceVisitor extends SwiftVisitor {
     private ProblemsHolder holder;
@@ -23,7 +26,11 @@ public class UnusedInstanceVisitor extends SwiftVisitor {
     public void visitVariableDeclaration(@NotNull SwiftVariableDeclaration variableDeclaration) {
         super.visitVariableDeclaration(variableDeclaration);
 
-        SwiftPatternInitializerGenImpl initializerGen = (SwiftPatternInitializerGenImpl) variableDeclaration.getPatternInitializerList().get(0);
+        List<SwiftPatternInitializer> patternInitializerList = variableDeclaration.getPatternInitializerList();
+        if (patternInitializerList.isEmpty()) {
+            return;
+        }
+        SwiftPatternInitializerGenImpl initializerGen = (SwiftPatternInitializerGenImpl) patternInitializerList.get(0);
         SwiftIdentifierPattern swiftIdentifierPattern = initializerGen.getVariables().get(0);
 
         PsiElement nameIdentifier = variableDeclaration.getVariables().get(0).getNameIdentifier();

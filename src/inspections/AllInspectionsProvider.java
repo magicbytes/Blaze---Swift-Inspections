@@ -1,6 +1,7 @@
 package inspections;
 
 import com.intellij.codeInspection.InspectionToolProvider;
+import inspections.documentation.MissingDocumentationInspection;
 import inspections.enumerations.SortEnumInspection;
 import inspections.unused.empty.EmptyMethodInspection;
 import inspections.unused.methods.SuperCallingMethodInspection;
@@ -22,7 +23,8 @@ public class AllInspectionsProvider implements InspectionToolProvider {
                 EmptyMethodInspection.class,
                 SuperCallingMethodInspection.class,
                 UnusedClassInspection.class,
-                UnusedInstanceInspection.class
+                UnusedInstanceInspection.class,
+                MissingDocumentationInspection.class
         };
     }
 }

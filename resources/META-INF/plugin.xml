@@ -10,7 +10,7 @@
     <li>Unused parameters</li>
     ]]></description>
 
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 
 
     <idea-version since-build="163"/>
@@ -27,9 +27,9 @@
         <!-- Add your extensions here -->
         <inspectionToolProvider implementation="inspections.AllInspectionsProvider"/>
 
-        <intentionAction>
-            <className>intents.AddToConstructor</className>
-        </intentionAction>
+        <!--        <intentionAction>-->
+        <!--            <className>intents.AddToConstructor</className>-->
+        <!--        </intentionAction>-->
     </extensions>
 
     <!--<actions>-->

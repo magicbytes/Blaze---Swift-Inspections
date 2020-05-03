@@ -36,6 +36,10 @@ public class UnusedClassVisitor extends SwiftVisitor {
     public void visitClassDeclaration(@NotNull SwiftClassDeclaration classDeclaration) {
         super.visitClassDeclaration(classDeclaration);
 
+        if (classDeclaration.getAttributes().hasAttribute("UIApplicationMain")) {
+            return;
+        }
+
         PsiElement nameIdentifier = classDeclaration.getNameIdentifier();
         if (nameIdentifier != null) {
             PsiReference first = ReferencesSearch.search(classDeclaration).findFirst();

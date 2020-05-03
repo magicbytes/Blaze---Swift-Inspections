@@ -1,17 +1,10 @@
 package inspections.instanceVariable;
 
 import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.ui.DocumentAdapter;
 import com.jetbrains.swift.codeinsight.highlighting.inspections.SwiftInspection;
-import inspections.enumerations.EnumVisitor;
+import com.jetbrains.swift.psi.SwiftVisitor;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import java.awt.*;
 
 public class InstanceVariableInspection extends SwiftInspection {
 
@@ -37,8 +30,8 @@ public class InstanceVariableInspection extends SwiftInspection {
 
     @NotNull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull ProblemsHolder holder, boolean isOnTheFly) {
-        return new InstanceVariableVisitor(holder);
+    public SwiftVisitor buildVisitor(@NotNull ProblemsHolder problemsHolder) {
+        return new InstanceVariableVisitor(problemsHolder);
     }
 
     @Override

@@ -42,7 +42,7 @@ public class InstanceVariableFix implements LocalQuickFix {
         parameterList.add(instance.createParameter("_ " + split[0], split[1]));
 //        instance.createParameterClause()
 
-        classParent.getStatementList().add(initializerDeclaration);
+//        classParent.getStatementList().add(initializerDeclaration);
 
         int z = 10 + 1;
 

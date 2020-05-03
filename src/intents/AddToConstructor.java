@@ -1,22 +1,11 @@
 package intents;
 
 import com.intellij.codeInsight.intention.PsiElementBaseIntentionAction;
-import com.intellij.lang.PsiBuilderFactory;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFileFactory;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
-import com.jetbrains.swift.SwiftParserTypes;
-import com.jetbrains.swift.lexer.SwiftTokenTypes;
-import com.jetbrains.swift.parser.SwiftTokenType;
 import com.jetbrains.swift.psi.*;
-import com.jetbrains.swift.psi.impl.SwiftPsiElementFactoryImpl;
-import com.jetbrains.swift.psi.impl.types.SwiftTypeFactoryImpl;
-import com.jetbrains.swift.psi.types.SwiftTypeFactory;
-import org.gradle.internal.impldep.org.codehaus.plexus.component.factory.java.JavaComponentFactory;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,10 +31,11 @@ public class AddToConstructor extends PsiElementBaseIntentionAction {
         if (variable == null) {
             return;
         }
-        SwiftClassDeclaration containingClass = (SwiftClassDeclaration) variable.getContainingClass();
-        List<SwiftStatement> statementList = containingClass.getStatementList();
+
         SwiftInitializerDeclaration constructor = null;
-        for (SwiftStatement statement : statementList) {
+        SwiftClassDeclaration containingClass = (SwiftClassDeclaration) variable.getContainingClass();
+        List<SwiftMemberDeclaration> declarations = containingClass.getDeclarations();
+        for (SwiftMemberDeclaration statement : declarations) {
             if (statement instanceof SwiftInitializerDeclaration) {
                 constructor = (SwiftInitializerDeclaration) statement;
                 break;

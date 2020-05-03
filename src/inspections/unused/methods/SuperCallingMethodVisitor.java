@@ -25,7 +25,7 @@ public class SuperCallingMethodVisitor extends SwiftVisitor {
 
         SwiftCodeBlock codeBlock = functionDeclaration.getCodeBlock();
         if (codeBlock != null) {
-            List<SwiftStatement> statementList = codeBlock.getStatementList();
+            List<SwiftStatement> statementList = codeBlock.getStatements();
             if (statementList.size() == 1 && statementList.get(0) instanceof SwiftCallExpression) {
                 shouldRegister = statementList.get(0).getText().startsWith("super.");
             }

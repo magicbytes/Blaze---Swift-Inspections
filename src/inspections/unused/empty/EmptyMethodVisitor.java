@@ -35,7 +35,7 @@ public class EmptyMethodVisitor extends SwiftVisitor {
         SwiftCodeBlock codeBlock = functionDeclaration.getCodeBlock();
         PsiElement nameIdentifier = functionDeclaration.getNameIdentifier();
         if (codeBlock != null && nameIdentifier != null) {
-            List<SwiftStatement> statementList = codeBlock.getStatementList();
+            List<SwiftStatement> statementList = codeBlock.getStatements();
             if (statementList.isEmpty()) {
                 holder.registerProblem(nameIdentifier, "Empty Method", ProblemHighlightType.LIKE_UNUSED_SYMBOL, new UnusedMethodFix(functionDeclaration, "Remove empty method"));
             }
